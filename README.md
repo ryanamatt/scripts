@@ -11,6 +11,7 @@ This project contains a collection of helpful scripts designed for Linux environ
 * mood.sh: A terminal-based background music utility.c
 * winpath.sh: A utility to convert Windows File Explorer paths to WSL paths and navigate to them instantly.
 * teleport.sh: A directory bookmarking utility to save and jump to frequently used paths.
+* script.c: A utility to print out the pulse or system information of the machine.
 
 ## **Installation**
 
@@ -21,6 +22,8 @@ To install or update the scripts, run the included installation script from the 
 ```
 
 What the installer does:
+
+* Binary Compilation: Looks for C/C++ code compiles it using gcc/g++, and moves the resulting binary to /usr/local/bin before cleaning up the build artifacts.
 
 * Binary Integration: Copies scripts to /usr/local/bin and ensures they are executable.
 
@@ -107,10 +110,28 @@ A directory bookmarking utility that allows you to "tag" directories and jump ba
 
   * Management: Easily list all saved tags with teleport list or delete them using remove or clear.
 
+### **7\. Pulse (pulse)**
+
+A lightweight system monitor written in C that provides a snapshot of your system's health.
+
+* Command: pulse
+
+* Key Features:
+
+  * System Info: Displays your current Linux distribution and system uptime.
+
+  * Live Metrics: Shows real-time CPU usage percentage and a visual progress bar for RAM consumption (Used/Total MB).
+
+  * Process Tracking: Displays the count of currently running processes.
+
 ## **Requirements**
 
-* **Linux:** bash, python3, git, grep and apt.
-  * Media Player: mpv and yt-dlp (or youtube-dl) are required for the mood script to function.
-  * sed and column (standard in most distributions) are required for the teleport script to manage and display bookmarks.
-* **WSL:** Ensure powershell.exe is available in your WSL path (standard in most setups) to use the wb command effectively.
-  * WSL Tools: wslpath (built into WSL) is used for path translation in the winpath script.
+* **Linux**: bash, python3, git, grep, and apt.
+
+  * Compiler: gcc is required to compile the pulse utility during installation.
+
+  * Media Player: mpv and yt-dlp (or youtube-dl) are required for the mood script.
+
+  * Utilities: sed and column for teleport; md5sum for the installer.
+
+* **WSL**: Ensure powershell.exe is available for wb and wslpath is available for winpath.

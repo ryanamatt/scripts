@@ -6,6 +6,12 @@
 # MD5 hashes, and updates the system binaries if the local version is newer.
 # Usage: ./install_scripts.sh
 
+# Define Colors
+BLUE='\033[0;34m'
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m'
+
 SOURCE_DIR=$(pwd)
 DEST_DIR="/usr/local/bin"
 FUNC_FILE="$HOME/.thrive_scripts.sh"
@@ -17,7 +23,13 @@ FILES=(
     "mood.sh:mood"
     "winpath.sh:winpath"
     "teleport.sh:teleport"
+    "pulse:pulse"
 )
+
+echo "Compiling Code..."
+if [ -f "pulse.c" ]; then
+    gcc pulse.c -o pulse
+fi
 
 echo "Checking for updates..."
 for entry in "${FILES[@]}";  do
@@ -40,7 +52,7 @@ for entry in "${FILES[@]}";  do
         dest_hash=$(md5sum "$dest_path" | awk '{print $1}')
 
         if [ "$src_hash" == "$dest_hash" ]; then
-            echo -e "\033[0;34m[Skipped]\033[0m $dest_name is already up to date."
+            echo -e "${BLUE}[Skipped]${NC} $dest_name is already up to date."
             continue
         fi
     fi
@@ -54,20 +66,26 @@ done
 
 # --- Manage shell scripts and bashrc ---
 
-echo "Updating thrive script functions..."
+echo "Updating thrive scripts..."
 cp "$SOURCE_DIR/thrive_scripts.sh" "$FUNC_FILE"
 
 MARKER="# [Thrive-Scripts-Auto-Source]"
 # Define the actual line to append (using single quotes so $HOME isn't evaluated yet)
 SOURCE_CMD='[[ -f "$HOME/.thrive_scripts.sh" ]] && source "$HOME/.thrive_scripts.sh"'
 
-echo "Updating thrive script functions..."
-cp "$SOURCE_DIR/thrive_scripts.sh" "$FUNC_FILE"
-
 # Search for the MARKER instead of the complex code line
 if ! grep -Fq "$MARKER" "$HOME/.bashrc"; then
     echo "Adding source command to ~/.bashrc..."
     echo -e "\n$MARKER\n$SOURCE_CMD" >> "$HOME/.bashrc"
 else
-    echo "Entry already exists in ~/.bashrc, skipping."
+    echo -e "${BLUE}[Skipped]${NC} Entry already exists in ~/.bashrc"
 fi
+
+# --- Cleanup ---
+echo "Cleaning up build artifacts..."
+if [ -f "$SOURCE_DIR/pulse" ]; then
+    rm "$SOURCE_DIR/pulse"
+    echo "Removed compiled binary: pulse"
+fi
+
+echo -e "${GREEN}Installation complete!${NC}"

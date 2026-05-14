@@ -7,5 +7,3 @@ shredder - A security-focused version of upkeep's cleanup functions. Overrites a
 winclip - A low-level bridge for the WSL/Windows clipboard.
 
 campefire - ASCII fireplace + ambient crackling audio.
-
-pulse - Tiny system dashboard in terminal. CPU, RAM, temps, battery, network, distro, uptime.
