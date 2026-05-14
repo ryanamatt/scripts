@@ -16,6 +16,7 @@ FILES=(
     "sprout.py:sprout"
     "mood.sh:mood"
     "winpath.sh:winpath"
+    "teleport.sh:teleport"
 )
 
 echo "Checking for updates..."

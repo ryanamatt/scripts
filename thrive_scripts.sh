@@ -6,3 +6,9 @@
 winpath() {
     source /usr/local/bin/winpath "$@"
 }
+
+teleport() {
+    source /usr/local/bin/teleport "$@"
+}
+
+alias tp='teleport'

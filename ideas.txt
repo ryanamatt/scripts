@@ -1,7 +1,5 @@
 This Text File is a few random ideas for possible scripts to add (not in any order)
 
-teleport - Instead of typing long paths, you "tag" a directory and jump back to it from anywhere.
-
 life - Display Conway's Game of Life in the terminal
 
 shredder - A security-focused version of upkeep's cleanup functions. Overrites a file multiple times before removing it.

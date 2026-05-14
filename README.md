@@ -8,8 +8,9 @@ This project contains a collection of helpful scripts designed for Linux environ
 * upkeep.sh: A shell script for automated system updates and cleanup.  
 * wb.py: A Python-based web search tool that works across native Linux and WSL.
 * sprout.py: A Python-based project scaffolder.
-* mood.sh: A terminal-based background music utility.
+* mood.sh: A terminal-based background music utility.c
 * winpath.sh: A utility to convert Windows File Explorer paths to WSL paths and navigate to them instantly.
+* teleport.sh: A directory bookmarking utility to save and jump to frequently used paths.
 
 ## **Installation**
 
@@ -78,7 +79,7 @@ A background music utility that streams curated playlists using mpv.
 
   * Process Control: Easily stop the music using the stop argument, which terminates the mpv process.
 
-### **5. Windows Path Navigator (winpath)**
+### **5\. Windows Path Navigator (winpath)**
 
 A utility that bridges Windows File Explorer with the WSL terminal by translating path structures.
 
@@ -90,9 +91,26 @@ A utility that bridges Windows File Explorer with the WSL terminal by translatin
 
 Note: For paths containing spaces or to ensure best results, wrap the Windows path in single quotes: winpath 'C:\Users\Name\Folder Name'.
 
+### **6\. Teleport (teleport)**
+
+A directory bookmarking utility that allows you to "tag" directories and jump back to them instantly from anywhere in the file system.
+
+* Command: teleport [tag | add [tag] | list | remove [tag] | clear]
+
+* Bookmarks stored in .teleport_bookmarks in user's home.
+
+* Key Features:
+
+  * Add Bookmarks: Save your current location with teleport add [tag].
+
+  * Instant Navigation: Jump to a saved location by typing teleport [tag].
+
+  * Management: Easily list all saved tags with teleport list or delete them using remove or clear.
+
 ## **Requirements**
 
-* **Linux:** bash, python3, git, grep and apt package manager (for upkeep).
+* **Linux:** bash, python3, git, grep and apt.
   * Media Player: mpv and yt-dlp (or youtube-dl) are required for the mood script to function.
+  * sed and column (standard in most distributions) are required for the teleport script to manage and display bookmarks.
 * **WSL:** Ensure powershell.exe is available in your WSL path (standard in most setups) to use the wb command effectively.
   * WSL Tools: wslpath (built into WSL) is used for path translation in the winpath script.
