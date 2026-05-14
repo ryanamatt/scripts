@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# install_scripts.sh - Syncs local scripts to /usr/local/bin
+#
+# This script iterates through the FILES array, checks for changes using 
+# MD5 hashes, and updates the system binaries if the local version is newer.
+# Usage: ./install_scripts.sh
+
 SOURCE_DIR=$(pwd)
 DEST_DIR="/usr/local/bin"
 

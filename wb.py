@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+"""
+Web Search Utility for WSL and Native OS.
+
+This script allows users to perform Google searches from the command line.
+It specifically handles the Windows Subsystem for Linux (WSL) by routing 
+the request through PowerShell to open the host machine's browser.
+"""
+
 import webbrowser
 import urllib.parse
 import sys
