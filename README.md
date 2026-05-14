@@ -27,8 +27,6 @@ What the installer does:
 
 * Automatically adds a source command to your ~/.bashrc (marked with [Thrive-Scripts-Auto-Source]) so that utilities like winpath work correctly in every new terminal session.
 
-**Note:** The installer uses md5sum to check if your installed versions are already up to date, skipping the copy process if no changes are detected.
-
 ## **Script Descriptions**
 
 ### **1\. Upkeep (upkeep)**
