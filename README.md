@@ -9,6 +9,7 @@ This project contains a collection of helpful scripts designed for Linux environ
 * wb.py: A Python-based web search tool that works across native Linux and WSL.
 * sprout.py: A Python-based project scaffolder.
 * mood.sh: A terminal-based background music utility.
+* winpath.sh: A utility to convert Windows File Explorer paths to WSL paths and navigate to them instantly.
 
 ## **Installation**
 
@@ -59,7 +60,7 @@ A scaffolding utility to quickly initialize directory structures, virtual enviro
 
 ### **4\. Mood Music (mood)**
 
-* A background music utility that streams curated playlists using mpv.
+A background music utility that streams curated playlists using mpv.
 
 * Command: mood [lofi|rain|jazz] or mood stop
 
@@ -71,8 +72,21 @@ A scaffolding utility to quickly initialize directory structures, virtual enviro
 
   * Process Control: Easily stop the music using the stop argument, which terminates the mpv process.
 
+### **5. Windows Path Navigator (winpath)**
+
+A utility that bridges Windows File Explorer with the WSL terminal by translating path structures.
+
+* Command: winpath "C:\Users\Name\Downloads"
+
+* Handling Backslashes: Optimized to handle Windows-style backslashes and drive letters (e.g., C: to /mnt/c).
+
+* Instant Navigation: Automatically changes your current terminal directory to the translated path.
+
+Note: For paths containing spaces or to ensure best results, wrap the Windows path in single quotes: winpath 'C:\Users\Name\Folder Name'.
+
 ## **Requirements**
 
 * **Linux:** bash, python3, git, and apt package manager (for upkeep). 
   * Media Player: mpv and yt-dlp (or youtube-dl) are required for the mood script to function.
 * **WSL:** Ensure powershell.exe is available in your WSL path (standard in most setups) to use the wb command effectively.
+  * WSL Tools: wslpath (built into WSL) is used for path translation in the winpath script.
