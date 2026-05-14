@@ -1,4 +1,4 @@
-# **Linux & WSL Utility Scripts**
+# **ThriveScript - Linux & WSL Utility Scripts**
 
 This project contains a collection of helpful scripts designed for Linux environments (optimized for Ubuntu) and Windows Subsystem for Linux (WSL). These utilities streamline system maintenance and bridge the gap between the WSL terminal and the Windows host browser.
 
@@ -86,7 +86,7 @@ Note: For paths containing spaces or to ensure best results, wrap the Windows pa
 
 ## **Requirements**
 
-* **Linux:** bash, python3, git, and apt package manager (for upkeep). 
+* **Linux:** bash, python3, git, and apt package manager (for upkeep).
   * Media Player: mpv and yt-dlp (or youtube-dl) are required for the mood script to function.
 * **WSL:** Ensure powershell.exe is available in your WSL path (standard in most setups) to use the wb command effectively.
   * WSL Tools: wslpath (built into WSL) is used for path translation in the winpath script.
