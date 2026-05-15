@@ -4,7 +4,7 @@ This project contains a collection of helpful scripts designed for Linux environ
 
 ## **Project Structure**
 
-* install\_scripts.sh: The installer that manages versioning and system PATH integration.  
+* install.sh: The installer that manages versioning and system PATH integration.  
 * upkeep.sh: A shell script for automated system updates and cleanup.  
 * wb.py: A Python-based web search tool that works across native Linux and WSL.
 * sprout.py: A Python-based project scaffolder.
@@ -12,13 +12,14 @@ This project contains a collection of helpful scripts designed for Linux environ
 * winpath.sh: A utility to convert Windows File Explorer paths to WSL paths and navigate to them instantly.
 * teleport.sh: A directory bookmarking utility to save and jump to frequently used paths.
 * pulse.c: A utility to print out the pulse or system information of the machine.
+* life.c: A terminal-based implementation of Conway's Game of Life written in C.  
 
 ## **Installation**
 
 To install or update the scripts, run the included installation script from the project root. This will copy the tools to /usr/local/bin and ensure they are executable.
 
 ```{Bash}
-./install_scripts.sh
+./install.sh
 ```
 
 What the installer does:
@@ -123,6 +124,22 @@ A lightweight system monitor written in C that provides a snapshot of your syste
   * Live Metrics: Shows real-time CPU usage percentage and a visual progress bar for RAM consumption (Used/Total MB).
 
   * Process Tracking: Displays the count of currently running processes.
+
+### **8\. Life (life)**
+
+A terminal-based visualization of Conway’s Game of Life, using high-performance C and ANSI escape codes for a smooth, colorful experience.
+
+* Command: life
+
+* Key Features:
+
+  * Dynamic Seeding: Uses the system clock to generate a unique random starting population every time the script is run.
+
+  * Visuals: Utilizes ANSI color codes for green "living" cells and handles terminal refreshing without screen flickering.
+  
+  * Performance: Optimized in C to handle neighbor-calculation logic efficiently on a 60x30 grid.
+  
+  * Infinite Loop: Runs continuously until interrupted (Ctrl+C), simulating the infinite evolution of cellular automata.
 
 ## **Requirements**
 

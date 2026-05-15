@@ -1,9 +1,25 @@
 This Text File is a few random ideas for possible scripts to add (not in any order)
 
-life - Display Conway's Game of Life in the terminal
-
-shredder - A security-focused version of upkeep's cleanup functions. Overrites a file multiple times before removing it.
+shredder - A security-focused version of upkeep's cleanup functions. Overrites a file multiple times 
+    before removing it.
 
 winclip - A low-level bridge for the WSL/Windows clipboard.
 
 campefire - ASCII fireplace + ambient crackling audio.
+
+ritual - Morning Ritual Type of Stuff
+
+dub - A utility to temporarily or permanently "dub" a long, complex command with 
+    a short nickname without manually editing .bashrc
+
+vitals - An automated version of pulse that runs in the background and sends a notify alert if CPU 
+    or RAM usage exceeds a certain threshold.
+
+weave - A script that generates terminal-based ASCII fractals (like the Mandelbrot set) using color 
+    gradients.
+
+canvas- A minimal terminal drawing tool where you use arrow keys to "paint" with ASCII characters 
+    and ANSI colors.
+
+vinyl - visualizer for the mood script that displays a spinning ASCII record or a moving waveform 
+    while the audio streams.

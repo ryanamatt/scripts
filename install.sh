@@ -24,12 +24,20 @@ FILES=(
     "winpath.sh:winpath"
     "teleport.sh:teleport"
     "pulse:pulse"
+    "life:life"
 )
 
 echo "Compiling Code..."
-if [ -f "pulse.c" ]; then
-    gcc pulse.c -o pulse
-fi
+# if [ -f "pulse.c" ]; then
+#     gcc pulse.c -o pulse
+# fi
+for c_file in *.c; do
+    if [ -f "$c_file" ]; then
+        binary_name="${c_file%.*}"
+        echo -e "${BLUE}[Compiling]${NC} $c_file -> $binary_name"
+        gcc "$c_file" -o "$binary_name"
+    fi
+done
 
 echo "Checking for updates..."
 for entry in "${FILES[@]}";  do
@@ -42,7 +50,7 @@ for entry in "${FILES[@]}";  do
 
     # 1. Check if source exists
     if [ ! -f "$src_path" ]; then
-        echo -e "\033[0;31mError: $src_file not found in $SOURCE_DIR\033[0m"
+        echo -e "${RED}Error: $src_file not found in $SOURCE_DIR${NC}"
         continue
     fi
 
@@ -58,7 +66,7 @@ for entry in "${FILES[@]}";  do
     fi
 
     # 3. Perform the copy and set permissions
-    echo -e "\033[0;32m[Updating]\033[0m $dest_name..."
+    echo -e "${GREEN}[Updating]${NC} $dest_name..."
     sudo cp "$src_path" "$dest_path"
     sudo chmod +x "$dest_path"
 
@@ -71,7 +79,7 @@ cp "$SOURCE_DIR/thrive.sh" "$FUNC_FILE"
 
 MARKER="# [Thrive-Scripts-Auto-Source]"
 # Define the actual line to append (using single quotes so $HOME isn't evaluated yet)
-SOURCE_CMD='[[ -f "$HOME/.thrive_scripts.sh" ]] && source "$HOME/.thrive_scripts.sh"'
+SOURCE_CMD='[[ -f "$HOME/.thrive.sh" ]] && source "$HOME/.thrive.sh"'
 
 # Search for the MARKER instead of the complex code line
 if ! grep -Fq "$MARKER" "$HOME/.bashrc"; then
@@ -82,10 +90,14 @@ else
 fi
 
 # --- Cleanup ---
+
+# Removes any binary created from a .c file to keep the folder clean
 echo "Cleaning up build artifacts..."
-if [ -f "$SOURCE_DIR/pulse" ]; then
-    rm "$SOURCE_DIR/pulse"
-    echo "Removed compiled binaries..."
-fi
+for c_file in *.c; do
+    binary_name="${c_file%.*}"
+    if [ -f "$SOURCE_DIR/$binary_name" ]; then
+        rm "$SOURCE_DIR/$binary_name"
+    fi
+done
 
 echo -e "${GREEN}Installation complete!${NC}"
